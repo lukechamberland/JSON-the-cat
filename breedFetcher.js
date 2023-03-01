@@ -10,7 +10,8 @@ module.exports = (catBreed, cb) => {
   
   // implemented the server request
 
-  request(options, (err, resp, body) => {
+  const fetchBreedDescription = function(breedName, callback) {
+    request(options, (err, resp, body) => {
     if (!err) {
       if (resp.statusCode !== 200) {
         return cb(`Unsuccessful connection to the server. statusCode ${resp.statusCode}`);
@@ -34,4 +35,7 @@ module.exports = (catBreed, cb) => {
       return cb(`Could not fetch any information about '${catBreed}' from the server.`);
     }
   });
-};
+}
+}
+
+module.exports  = { fetchBreedDescription };
